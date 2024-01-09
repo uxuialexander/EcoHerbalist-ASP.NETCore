@@ -9,7 +9,7 @@ using System;
 
 namespace EcoHerbalist.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(EcoHerbalistContext))]
     [Migration("00000000000000_CreateIdentitySchema")]
     partial class CreateIdentitySchema
     {
