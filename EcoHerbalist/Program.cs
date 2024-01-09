@@ -13,7 +13,15 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<EcoHerbalistContext>();
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireAdministratorRole",
+         policy => policy.RequireRole("Administrator"));
+}); 
+
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation(); ;
 
 var app = builder.Build();
